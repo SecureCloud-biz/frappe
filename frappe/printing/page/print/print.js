@@ -64,15 +64,15 @@ frappe.ui.form.PrintView = class {
 	setup_toolbar() {
 		this.page.set_primary_action(__("Print"), () => this.printit(), "printer");
 
-		this.page.add_button(__("Full Page"), () => this.render_page("/printview?"), {
-			icon: "full-page",
-		});
+		// this.page.add_button(__("Full Page"), () => this.render_page("/printview?"), {
+		// 	icon: "full-page",
+		// });
 
-		this.page.add_button(__("PDF"), () => this.render_pdf(), { icon: "small-file" });
+		//this.page.add_button(__("PDF"), () => this.render_pdf(), { icon: "small-file" });
 
-		this.page.add_button(__("Refresh"), () => this.refresh_print_format(), {
-			icon: "refresh",
-		});
+		// this.page.add_button(__("Refresh"), () => this.refresh_print_format(), {
+		// 	icon: "refresh",
+		// });
 
 		this.page.add_action_icon(
 			"file",
@@ -185,11 +185,11 @@ frappe.ui.form.PrintView = class {
 		this.setup_customize_dialog();
 
 		// print format builder beta
-		this.page.add_inner_message(`
-			<a style="line-height: 2.4" href="/app/print-format-builder-beta?doctype=${this.frm.doctype}">
-				${__("Try the new Print Format Builder")}
-			</a>
-		`);
+		// this.page.add_inner_message(`
+		// 	<a style="line-height: 2.4" href="/app/print-format-builder-beta?doctype=${this.frm.doctype}">
+		// 		${__("Try the new Print Format Builder")}
+		// 	</a>
+		// `);
 
 		let tasks = [
 			this.refresh_print_options,
