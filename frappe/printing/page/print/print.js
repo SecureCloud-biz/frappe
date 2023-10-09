@@ -64,16 +64,6 @@ frappe.ui.form.PrintView = class {
 	setup_toolbar() {
 		this.page.set_primary_action(__("Print"), () => this.printit(), "printer");
 
-		// this.page.add_button(__("Full Page"), () => this.render_page("/printview?"), {
-		// 	icon: "full-page",
-		// });
-
-		//this.page.add_button(__("PDF"), () => this.render_pdf(), { icon: "small-file" });
-
-		// this.page.add_button(__("Refresh"), () => this.refresh_print_format(), {
-		// 	icon: "refresh",
-		// });
-
 		this.page.add_action_icon(
 			"file",
 			() => {
@@ -184,13 +174,6 @@ frappe.ui.form.PrintView = class {
 		this.set_breadcrumbs();
 		this.setup_customize_dialog();
 
-		// print format builder beta
-		// this.page.add_inner_message(`
-		// 	<a style="line-height: 2.4" href="/app/print-format-builder-beta?doctype=${this.frm.doctype}">
-		// 		${__("Try the new Print Format Builder")}
-		// 	</a>
-		// `);
-
 		let tasks = [
 			this.refresh_print_options,
 			this.set_default_print_language,
@@ -295,15 +278,6 @@ frappe.ui.form.PrintView = class {
 		this.toggle_raw_printing();
 		this.preview();
 	}
-
-	// bind_events () {
-	// 	// // hide print view on pressing escape, only if there is no focus on any input
-	// 	// $(document).on("keydown", function (e) {
-	// 	// 	if (e.which === 27 && me.frm && e.target === document.body) {
-	// 	// 		me.hide();
-	// 	// 	}
-	// 	// });
-	// }
 
 	setup_customize_dialog() {
 		let print_format = this.get_print_format();
