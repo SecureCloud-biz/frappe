@@ -129,6 +129,7 @@ frappe.ui.notifications = {
 	get_notification_config() {
 		return frappe.xcall("frappe.desk.notifications.get_notification_info").then((r) => {
 			frappe.ui.notifications.config = r;
+			console.log(r)
 			return r;
 		});
 	},
@@ -188,9 +189,6 @@ class NotificationsView extends BaseNotificationsView {
 			this.dropdown_items = r.message.notification_logs;
 			frappe.update_user_info(r.message.user_info);
 			this.render_notifications_dropdown();
-			if (this.settings.seen == 0 && this.dropdown_items.length > 0) {
-				this.toggle_notification_icon(false);
-			}
 		});
 	}
 
@@ -242,6 +240,9 @@ class NotificationsView extends BaseNotificationsView {
 
 		let read_class = field.read ? "" : "unread";
 		let message = field.subject;
+		if(!field.read){
+			this.toggle_notification_icon(false)
+		}
 
 		let title = message.match(/<b class="subject-title">(.*?)<\/b>/);
 		message = title
