@@ -360,7 +360,9 @@ frappe.views.Workspace = class Workspace {
 			this.content = current_page && JSON.parse(current_page.content);
 
 			this.content && this.add_custom_cards_in_content();
-
+			if(!current_page){
+                current_page = {'name':'Prospectos','title':'Prospectos','public':false}
+            }
 			$(".item-anchor").addClass("disable-click");
 
 			if (this.pages && this.pages[current_page.name]) {

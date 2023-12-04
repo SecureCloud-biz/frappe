@@ -51,7 +51,7 @@
   {
    "depends_on": "eval: (!doc.ui_tour && (!doc.is_table_field || (doc.is_table_field && doc.parent_fieldname)))",
    "fieldname": "fieldname",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Fieldname",
    "mandatory_depends_on": "eval: (!doc.ui_tour)"
   },
