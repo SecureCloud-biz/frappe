@@ -80,6 +80,20 @@ export default class NumberCardWidget extends Widget {
 
 		if (is_document_type) {
 			const filters = JSON.parse(this.card_doc.filters_json);
+
+			const dynamic_filters = JSON.parse(this.card_doc.dynamic_filters_json);
+			
+			for (let i = 0; i < dynamic_filters.length; i++) {
+				const filter = dynamic_filters[i];
+				let dynamic_code = filter.pop();
+				filter.push(eval(dynamic_code));
+
+				// to fit the standard filter syntax
+				filter.push(false);
+
+				filters.push(filter);
+			}
+
 			frappe.route_options = filters.reduce((acc, filter) => {
 				return Object.assign(acc, {
 					[`${filter[0]}.${filter[1]}`]: [filter[2], filter[3]],
