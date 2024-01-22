@@ -168,7 +168,6 @@ frappe.dashboard_utils = {
 					</div>`,
 			},
 		];
-
 		if (is_document_type) {
 			if (dynamic_filters) {
 				filters = [...filters, ...dynamic_filters];
@@ -186,6 +185,11 @@ frappe.dashboard_utils = {
 						fieldtype: "Data",
 					});
 				}
+				fields.push({
+					label: `ubicacion (Tarea)`,
+					fieldname: "Tarea:ubicacion",
+					fieldtype: "Data",
+				});
 			});
 		} else {
 			filters = { ...dynamic_filters, ...filters };
